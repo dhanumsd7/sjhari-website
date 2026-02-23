@@ -9,11 +9,11 @@
     --font-sans: 'DM Sans', sans-serif;
     --font-display: 'Outfit', sans-serif;
 
-    /* Bold Yellow & Pink Palette */
-    --primary: 300 100% 50%; /* #FF00FF Magenta */
+    /* Premium Palette */
+    --primary: 326 100% 50%; /* Deepened Magenta */
     --primary-foreground: 0 0% 100%;
     
-    --accent: 47 100% 50%; /* #FFD700 Yellow */
+    --accent: 47 100% 50%; /* Gold Yellow */
     --accent-foreground: 222 47% 11%;
 
     --background: 0 0% 100%;
@@ -23,15 +23,15 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --secondary: 47 100% 95%;
+    --secondary: 210 40% 98%;
     --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 300 100% 50%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 326 100% 50%;
     
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
 
   .dark {

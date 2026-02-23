@@ -11,9 +11,9 @@ import { FloatingContact } from "@/components/FloatingContact";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen pb-20 md:pb-0">
+    <div className="flex flex-col min-h-screen">
       <Helmet>
-        <title>SJ Hari Painting – Painting Services in Ammandivilai</title>
+        <title>SJ Hari Painting – Premium Painting Services in Ammandivilai</title>
         <meta 
           name="description" 
           content="Professional painting, spray painting, spider work, and building maintenance services in Ammandivilai. Call or WhatsApp SJ Hari Painting today." 
@@ -31,7 +31,6 @@ export default function Home() {
       </main>
 
       <Footer />
-      <FloatingContact />
     </div>
   );
 }
