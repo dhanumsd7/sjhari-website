@@ -1,0 +1,124 @@
+You are a senior React + TypeScript engineer performing a full project stabilization and migration.
+
+GOAL:
+Fix ALL errors that appear when moving this project from Replit to VS Code / Cursor.
+Make the project clean, portable, optimized, and production-ready.
+
+==================================================
+PROJECT CONTEXT (DO NOT IGNORE)
+==================================================
+- Framework: React + TypeScript
+- Build tool: Vite
+- Routing: Wouter (NOT Next.js)
+- UI: Tailwind CSS + shadcn/ui
+- Animations: Framer Motion
+- Icons: lucide-react
+- This project was generated/refactored inside Replit
+- When opened in VS Code / Cursor, many lines throw errors
+
+==================================================
+TASK 1: FIX ALL ERRORS (CRITICAL)
+==================================================
+Scan the ENTIRE project and fix every error, including:
+
+- TypeScript type errors
+- Invalid or unresolved imports
+- Broken path aliases like "@/components/..."
+- Replit-only assumptions
+- Missing or incorrect tsconfig paths
+- Vite config issues
+- shadcn/ui import issues
+- Incorrect JSX/TSX usage
+- Unused variables and imports
+- Any runtime or compile-time error
+
+The project MUST:
+- Compile without red underline errors
+- Run with `npm run dev`
+- Work in VS Code and Cursor without warnings
+
+==================================================
+TASK 2: FIX PATH ALIASES PROPERLY
+==================================================
+Ensure "@/..." imports work correctly by:
+- Verifying tsconfig.json paths
+- Verifying vite.config.ts alias setup
+- Refactoring imports if necessary
+
+If aliases are unstable, refactor safely to relative imports.
+
+==================================================
+TASK 3: FIX ROUTING ARCHITECTURE
+==================================================
+- Ensure Wouter is used consistently
+- Ensure all routes exist and render correctly:
+  /
+  /services
+  /about
+  /contact
+- Ensure NO Next.js APIs or imports exist
+- Ensure navigation works on desktop and mobile
+
+==================================================
+TASK 4: NAVBAR OPTIMIZATION (VERY IMPORTANT)
+==================================================
+Refactor the Navbar component to be:
+
+DESKTOP:
+- Clean, horizontal layout
+- Brand on left
+- Links + WhatsApp CTA on right
+
+MOBILE:
+- Correct height (not oversized)
+- Thumb-friendly tap targets
+- Proper spacing
+- Smooth open/close animation
+- Menu closes before navigation
+- NO blocked clicks
+- NO overlay bugs
+- Works on real mobile devices
+
+Remove any unnecessary logic.
+Keep it simple, reliable, and optimized.
+
+==================================================
+TASK 5: CODE FLOW & STRUCTURE CLEANUP
+==================================================
+- Normalize component structure
+- Ensure consistent naming
+- Remove dead code
+- Improve readability
+- Improve maintainability
+- Keep animations subtle and safe
+- Ensure background animations (if any) do not block interactions
+
+==================================================
+TASK 6: CONFIGURATION VERIFICATION
+==================================================
+Verify and fix:
+- package.json scripts
+- tsconfig.json
+- vite.config.ts
+- tailwind.config.js
+- postcss.config.js
+
+Ensure the project runs cleanly with:
+  npm install
+  npm run dev
+
+==================================================
+FINAL VALIDATION (MUST PASS ALL)
+==================================================
+✔ No TypeScript errors in VS Code / Cursor  
+✔ No red underline errors  
+✔ App runs locally without crashes  
+✔ Navbar works perfectly on mobile  
+✔ Routing works everywhere  
+✔ Codebase is clean and portable  
+✔ Project no longer depends on Replit quirks  
+
+IMPORTANT RULE:
+If something is broken, FIX IT.
+Do not explain. Do not leave TODOs.
+Modify actual code files until the project is stable.
