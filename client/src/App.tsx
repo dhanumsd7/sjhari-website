@@ -1,12 +1,7 @@
 import { Switch, Route } from "wouter";
 import { HelmetProvider } from "react-helmet-async";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "./pages/Home";
 import NotFound from "./pages/not-found";
-
 
 function Router() {
   return (
@@ -17,20 +12,11 @@ function Router() {
   );
 }
 
-function App() {
+export default function App() {
   return (
     <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          {/* BACKGROUND ANIMATION (GLOBAL) */}
-          
-
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </QueryClientProvider>
+      {/* Global App */}
+      <Router />
     </HelmetProvider>
   );
 }
-
-export default App;
