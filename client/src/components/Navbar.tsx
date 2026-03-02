@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import {
   Menu,
   X,
-  Paintbrush,
   Phone,
   Home,
   Info,
@@ -18,24 +17,26 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location, setLocation] = useLocation();
 
+  /* ---------------- Scroll detection ---------------- */
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /* ---------------- Section navigation ---------------- */
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
 
     if (href.startsWith("/#")) {
       const id = href.replace("/#", "");
+
       const scrollToSection = () => {
         const el = document.getElementById(id);
         if (!el) return;
-        const y =
-          el.getBoundingClientRect().top +
-          window.pageYOffset -
-          80;
+
+        const y = el.getBoundingClientRect().top + window.pageYOffset - 90;
+
         window.scrollTo({ top: y, behavior: "smooth" });
       };
 
@@ -62,41 +63,63 @@ export function Navbar() {
     <motion.header
       initial={{ y: -80 }}
       animate={{ y: 0 }}
-      className="fixed top-6 inset-x-0 z-40"
+      className="fixed top-6 inset-x-0 z-50"
     >
       <div className="max-w-7xl mx-auto px-4">
-        {/* ULTRA GLASS PILL */}
+        {/* ================= GLASS PILL ================= */}
         <div
           className={`
-            transition-all duration-300
+            relative overflow-hidden rounded-full
+            transition-all duration-500
             ${
               isScrolled
-                ? "bg-white/90 backdrop-blur-lg border border-slate-200 shadow-md"
-                : "bg-white/[0.08] backdrop-blur-[40px] border border-white/40 shadow-[0_15px_60px_rgba(0,0,0,0.25)]"
+                ? `
+                  bg-background/50
+                  backdrop-blur-2xl
+                  border border-border/50
+                  shadow-[0_10px_40px_rgba(0,0,0,0.25)]
+                `
+                : `
+                  bg-background/20
+                  backdrop-blur-[70px]
+                  border border-white/20
+                  shadow-[0_30px_120px_rgba(0,0,0,0.5)]
+                `
             }
-            rounded-full
           `}
         >
-          <div className="flex h-14 md:h-16 items-center justify-between px-8">
-            {/* Logo */}
+          {/* Glass highlight */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/25 to-transparent pointer-events-none" />
+
+          <div className="relative z-10 flex h-14 md:h-16 items-center justify-between px-8">
+            {/* LOGO */}
             <Link
               href="/"
               onClick={() => handleNavClick("/#home")}
-              className="flex items-center gap-2"
+              className="flex items-center gap-3"
             >
-              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
-                <Paintbrush size={20} className="text-white" />
+              <div
+                className="w-10 h-10 md:w-11 md:h-11 rounded-full
+                           flex items-center justify-center
+                           overflow-visible"
+              >
+                <img
+                  src="/images/logo.png"
+                  alt="SJ Hari Painting Logo"
+                  className="w-[115%] h-[115%] object-contain"
+                />
               </div>
+
               <span
                 className={`font-bold text-lg md:text-xl tracking-tight ${
-                  isScrolled ? "text-slate-900" : "text-white"
+                  isScrolled ? "text-foreground" : "text-white"
                 }`}
               >
                 SJ Hari <span className="text-primary">Painting</span>
               </span>
             </Link>
 
-            {/* Desktop Nav */}
+            {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <button
@@ -104,7 +127,7 @@ export function Navbar() {
                   onClick={() => handleNavClick(link.href)}
                   className={`text-sm font-semibold transition-colors ${
                     isScrolled
-                      ? "text-slate-700 hover:text-primary"
+                      ? "text-muted-foreground hover:text-primary"
                       : "text-white/90 hover:text-white"
                   }`}
                 >
@@ -113,7 +136,7 @@ export function Navbar() {
               ))}
 
               <Button
-                className="bg-accent text-slate-900 rounded-full h-9 px-6 font-bold hover:scale-105 transition"
+                className="bg-accent text-accent-foreground rounded-full h-9 px-6 font-bold hover:scale-105 transition"
                 onClick={() =>
                   window.open("https://wa.me/919626344778", "_blank")
                 }
@@ -122,7 +145,7 @@ export function Navbar() {
               </Button>
             </nav>
 
-            {/* Mobile Toggle */}
+            {/* MOBILE TOGGLE */}
             <button
               className="md:hidden p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -130,12 +153,12 @@ export function Navbar() {
               {mobileMenuOpen ? (
                 <X
                   size={24}
-                  className={isScrolled ? "text-slate-900" : "text-white"}
+                  className={isScrolled ? "text-foreground" : "text-white"}
                 />
               ) : (
                 <Menu
                   size={24}
-                  className={isScrolled ? "text-slate-900" : "text-white"}
+                  className={isScrolled ? "text-foreground" : "text-white"}
                 />
               )}
             </button>
@@ -143,48 +166,57 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ================= MOBILE MENU ================= */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
+            {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-30"
+              className="fixed inset-0 bg-black/50 z-40"
               onClick={() => setMobileMenuOpen(false)}
             />
 
+            {/* Panel */}
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
-              className="fixed top-28 left-4 right-4 bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl z-40 p-6"
+              className="
+                fixed top-28 left-4 right-4
+                bg-background/55
+                backdrop-blur-2xl
+                border border-border/60
+                rounded-3xl
+                shadow-[0_30px_100px_rgba(0,0,0,0.6)]
+                z-50 p-6
+              "
             >
               <div className="space-y-4">
                 {navLinks.map((link) => (
                   <button
                     key={link.name}
                     onClick={() => handleNavClick(link.href)}
-                    className="flex items-center gap-3 text-lg font-bold text-slate-900"
+                    className="flex items-center gap-3 text-lg font-bold text-foreground"
                   >
                     {link.icon}
                     {link.name}
                   </button>
                 ))}
 
-                <div className="grid grid-cols-2 gap-3 pt-4 border-t">
+                <div className="grid grid-cols-2 gap-3 pt-4 border-t border-border">
                   <Button
                     variant="outline"
-                    onClick={() =>
-                      (window.location.href = "tel:+919626344778")
-                    }
+                    onClick={() => (window.location.href = "tel:+919626344778")}
                   >
                     <Phone size={18} className="mr-2" />
                     Call
                   </Button>
+
                   <Button
-                    className="bg-accent"
+                    className="bg-accent text-accent-foreground"
                     onClick={() =>
                       window.open("https://wa.me/919626344778", "_blank")
                     }
