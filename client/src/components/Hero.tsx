@@ -1,9 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button"; // ✅ FIXED (no alias)
 import { Phone, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 
+/* -----------------------------
+   Hero Images
+----------------------------- */
 const HERO_IMAGES = [
   "/images/hero/image1.jpeg",
   "/images/hero/image2.jpeg",
@@ -14,10 +17,14 @@ const HERO_IMAGES = [
 export function Hero() {
   const [index, setIndex] = useState(0);
 
+  /* -----------------------------
+     Background rotation
+  ----------------------------- */
   useEffect(() => {
     const i = setInterval(() => {
       setIndex((p) => (p + 1) % HERO_IMAGES.length);
     }, 6000);
+
     return () => clearInterval(i);
   }, []);
 
@@ -28,13 +35,15 @@ export function Hero() {
         <title>
           SJ Hari Painting & Building Maintenance | Ammandivilai, Kanyakumari
         </title>
+
         <meta
           name="description"
-          content="SJ Hari Painting provides professional painting and building maintenance services in Ammandivilai, Kanyakumari District, Tamil Nadu. Residential, commercial, spray painting, spider work, and high-rise maintenance."
+          content="SJ Hari Painting offers professional painting and building maintenance services in Ammandivilai, Kanyakumari District, Tamil Nadu. Experts in residential, commercial, spray painting, spider work, and high-rise maintenance."
         />
+
         <meta
           name="keywords"
-          content="Building maintenance Ammandivilai, Painting services Kanyakumari, Professional painters Tamil Nadu, Spider work painting, High-rise building maintenance"
+          content="Building maintenance Ammandivilai, Painting services Kanyakumari, Professional painters Tamil Nadu, Spider work painting, High-rise maintenance"
         />
       </Helmet>
 
@@ -43,7 +52,7 @@ export function Hero() {
         id="home"
         className="relative min-h-screen flex items-center overflow-hidden"
       >
-        {/* Background images */}
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <AnimatePresence>
             <motion.img
@@ -57,6 +66,8 @@ export function Hero() {
               alt="SJ Hari Painting and Building Maintenance Service"
             />
           </AnimatePresence>
+
+          {/* Overlay */}
           <div className="absolute inset-0 bg-black/55" />
         </div>
 
@@ -74,7 +85,7 @@ export function Hero() {
             Residential • Commercial • High-Rise • Cleaning & Maintenance
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA */}
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
             <Button
               className="bg-white text-slate-900 h-12 px-8 rounded-full font-bold"
@@ -82,6 +93,7 @@ export function Hero() {
             >
               <Phone className="mr-2" /> Call Now
             </Button>
+
             <Button
               className="bg-accent text-slate-900 h-12 px-8 rounded-full font-bold"
               onClick={() =>
@@ -92,7 +104,7 @@ export function Hero() {
             </Button>
           </div>
 
-          {/* Soft Marketing Line */}
+          {/* Marketing line */}
           <p className="mt-6 text-white/70 text-sm font-medium tracking-wide max-w-xl">
             One call is all it takes — we handle everything from start to finish.
           </p>

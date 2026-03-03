@@ -8,7 +8,7 @@ import {
   Briefcase,
   MessageSquare,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button"; // ✅ FIXED (relative import)
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
 
@@ -35,7 +35,10 @@ export function Navbar() {
         const el = document.getElementById(id);
         if (!el) return;
 
-        const y = el.getBoundingClientRect().top + window.pageYOffset - 90;
+        const y =
+          el.getBoundingClientRect().top +
+          window.pageYOffset -
+          90;
 
         window.scrollTo({ top: y, behavior: "smooth" });
       };
@@ -68,25 +71,11 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4">
         {/* ================= GLASS PILL ================= */}
         <div
-          className={`
-            relative overflow-hidden rounded-full
-            transition-all duration-500
-            ${
-              isScrolled
-                ? `
-                  bg-background/50
-                  backdrop-blur-2xl
-                  border border-border/50
-                  shadow-[0_10px_40px_rgba(0,0,0,0.25)]
-                `
-                : `
-                  bg-background/20
-                  backdrop-blur-[70px]
-                  border border-white/20
-                  shadow-[0_30px_120px_rgba(0,0,0,0.5)]
-                `
-            }
-          `}
+          className={`relative overflow-hidden rounded-full transition-all duration-500 ${
+            isScrolled
+              ? "bg-background/50 backdrop-blur-2xl border border-border/50 shadow-[0_10px_40px_rgba(0,0,0,0.25)]"
+              : "bg-background/20 backdrop-blur-[70px] border border-white/20 shadow-[0_30px_120px_rgba(0,0,0,0.5)]"
+          }`}
         >
           {/* Glass highlight */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/25 to-transparent pointer-events-none" />
@@ -98,11 +87,7 @@ export function Navbar() {
               onClick={() => handleNavClick("/#home")}
               className="flex items-center gap-3"
             >
-              <div
-                className="w-10 h-10 md:w-11 md:h-11 rounded-full
-                           flex items-center justify-center
-                           overflow-visible"
-              >
+              <div className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center">
                 <img
                   src="/images/logo.png"
                   alt="SJ Hari Painting Logo"
@@ -170,7 +155,6 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -179,20 +163,11 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             />
 
-            {/* Panel */}
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
-              className="
-                fixed top-28 left-4 right-4
-                bg-background/55
-                backdrop-blur-2xl
-                border border-border/60
-                rounded-3xl
-                shadow-[0_30px_100px_rgba(0,0,0,0.6)]
-                z-50 p-6
-              "
+              className="fixed top-28 left-4 right-4 bg-background/55 backdrop-blur-2xl border border-border/60 rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.6)] z-50 p-6"
             >
               <div className="space-y-4">
                 {navLinks.map((link) => (
@@ -209,7 +184,9 @@ export function Navbar() {
                 <div className="grid grid-cols-2 gap-3 pt-4 border-t border-border">
                   <Button
                     variant="outline"
-                    onClick={() => (window.location.href = "tel:+919626344778")}
+                    onClick={() =>
+                      (window.location.href = "tel:+919626344778")
+                    }
                   >
                     <Phone size={18} className="mr-2" />
                     Call
@@ -218,7 +195,10 @@ export function Navbar() {
                   <Button
                     className="bg-accent text-accent-foreground"
                     onClick={() =>
-                      window.open("https://wa.me/919626344778", "_blank")
+                      window.open(
+                        "https://wa.me/919626344778",
+                        "_blank"
+                      )
                     }
                   >
                     WhatsApp
