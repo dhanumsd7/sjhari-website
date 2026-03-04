@@ -7,72 +7,79 @@
 /* =========================
    PREMIUM EARTH THEME
    ========================= */
+
 @layer base {
+
   :root {
+
     /* Fonts */
     --font-sans: 'DM Sans', sans-serif;
     --font-display: 'Outfit', sans-serif;
 
-    /* 🌿 BACKGROUND SYSTEM (NO WHITE) */
+    /* 🌿 BACKGROUND SYSTEM */
     --background: 40 33% 93%;
-    /* #F2EFEA beige */
-    --foreground: 120 10% 11%;
-    /* #1C1F1A charcoal */
+    --foreground: 220 15% 15%;
 
     /* Cards */
     --card: 40 30% 96%;
-    /* slightly lighter beige */
-    --card-foreground: 120 10% 11%;
+    --card-foreground: 220 15% 15%;
+    --card-border: 40 20% 85%;
 
-    /* 🌲 BRAND COLORS */
-    --primary: 120 22% 30%;
-    /* #3A5A40 deep olive */
+    /* ⭐ PREMIUM BRAND COLORS */
+
+    /* Primary (premium charcoal instead of green) */
+    --primary: 220 15% 18%;
     --primary-foreground: 0 0% 100%;
 
-    /* ✨ ACCENT */
-    --accent: 47 95% 53%;
-    /* gold */
-    --accent-foreground: 120 10% 11%;
+    /* Accent (luxury gold) */
+    --accent: 45 95% 55%;
+    --accent-foreground: 220 15% 18%;
 
     /* Neutral UI */
     --secondary: 40 25% 90%;
-    --secondary-foreground: 120 10% 20%;
+    --secondary-foreground: 220 15% 20%;
 
     --muted: 40 25% 90%;
     --muted-foreground: 90 15% 38%;
-    /* #5F6F52 muted olive */
 
     --border: 40 20% 85%;
     --input: 40 20% 85%;
-    --ring: 120 22% 30%;
+    --ring: 220 15% 18%;
 
     --radius: 1.25rem;
   }
 
-  /* Optional dark mode (charcoal luxury) */
+  /* =========================
+     DARK MODE
+     ========================= */
+
   .dark {
-    --background: 120 10% 10%;
+
+    --background: 220 15% 10%;
     --foreground: 40 33% 93%;
 
-    --card: 120 10% 14%;
+    --card: 220 15% 14%;
     --card-foreground: 40 33% 93%;
+    --card-border: 220 15% 18%;
 
-    --primary: 120 22% 45%;
-    --accent: 47 95% 53%;
+    --primary: 220 15% 25%;
+    --primary-foreground: 0 0% 100%;
 
-    --muted: 120 10% 18%;
+    --accent: 45 95% 55%;
+    --accent-foreground: 220 15% 18%;
+
+    --muted: 220 15% 18%;
     --muted-foreground: 40 20% 70%;
 
-    --border: 120 10% 18%;
-    --input: 120 10% 18%;
-    --ring: 120 22% 45%;
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 220 15% 25%;
   }
-}
 
-/* =========================
-   GLOBAL BASE STYLES
-   ========================= */
-@layer base {
+  /* =========================
+     GLOBAL BASE STYLES
+     ========================= */
+
   * {
     @apply border-border;
   }
@@ -87,6 +94,7 @@
   }
 
   /* ✨ PREMIUM TYPOGRAPHY */
+
   h1,
   h2,
   h3 {
@@ -105,12 +113,15 @@
 /* =========================
    UTILITIES
    ========================= */
+
 @layer utilities {
+
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Glassmorphism (earthy glass) */
+  /* Glassmorphism */
+
   .glass {
     @apply bg-background/70 backdrop-blur-xl border border-border/50 shadow-lg;
   }
