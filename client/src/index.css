@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   PREMIUM EARTH THEME
+   ========================= */
+
+@layer base {
+
+  :root {
+
+    /* Fonts */
+    --font-sans: 'DM Sans', sans-serif;
+    --font-display: 'Outfit', sans-serif;
+
+    /* 🌿 BACKGROUND SYSTEM */
+    --background: 40 33% 93%;
+    --foreground: 220 15% 15%;
+
+    /* Cards */
+    --card: 40 30% 96%;
+    --card-foreground: 220 15% 15%;
+    --card-border: 40 20% 85%;
+
+    /* ⭐ PREMIUM BRAND COLORS */
+
+    /* Primary (premium charcoal instead of green) */
+    --primary: 220 15% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Accent (luxury gold) */
+    --accent: 45 95% 55%;
+    --accent-foreground: 220 15% 18%;
+
+    /* Neutral UI */
+    --secondary: 40 25% 90%;
+    --secondary-foreground: 220 15% 20%;
+
+    --muted: 40 25% 90%;
+    --muted-foreground: 90 15% 38%;
+
+    --border: 40 20% 85%;
+    --input: 40 20% 85%;
+    --ring: 220 15% 18%;
+
+    --radius: 1.25rem;
+  }
+
+  /* =========================
+     DARK MODE
+     ========================= */
+
+  .dark {
+
+    --background: 220 15% 10%;
+    --foreground: 40 33% 93%;
+
+    --card: 220 15% 14%;
+    --card-foreground: 40 33% 93%;
+    --card-border: 220 15% 18%;
+
+    --primary: 220 15% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 45 95% 55%;
+    --accent-foreground: 220 15% 18%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 40 20% 70%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 220 15% 25%;
+  }
+
+  /* =========================
+     GLOBAL BASE STYLES
+     ========================= */
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  /* ✨ PREMIUM TYPOGRAPHY */
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+}
+
+/* =========================
+   UTILITIES
+   ========================= */
+
+@layer utilities {
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Glassmorphism */
+
+  .glass {
+    @apply bg-background/70 backdrop-blur-xl border border-border/50 shadow-lg;
+  }
+
+  .glass-strong {
+    @apply bg-background/60 backdrop-blur-2xl border border-border/60 shadow-2xl;
+  }
+
+  .pointer-events-none-all {
+    pointer-events: none !important;
+  }
+
+  .z-background {
+    z-index: -10 !important;
+  }
+}

@@ -1,0 +1,38 @@
+modules = ["nodejs-20", "web"]
+
+run = "npm run dev"
+
+hidden = [".config", ".git", "node_modules", "dist"]
+
+[nix]
+channel = "stable-24_05"
+
+[[ports]]
+localPort = 5173
+externalPort = 80
+
+[[ports]]
+localPort = 5174
+externalPort = 3000
+
+[[ports]]
+localPort = 5175
+externalPort = 3001
+
+[[ports]]
+localPort = 5176
+externalPort = 3002
+
+[env]
+PORT = "5173"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
+waitForPort = 5173
